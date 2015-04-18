@@ -1,24 +1,284 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DrinkWaterTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="BackgroundView" customModule="DrinkWaterTracker" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqS-dI-Yw0" userLabel="Plus" customClass="PushButton" customModule="DrinkWaterTracker" customModuleProvider="target">
+                                <rect key="frame" x="250" y="350" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="KsY-s9-4XS"/>
+                                    <constraint firstAttribute="height" constant="100" id="UHt-2B-E9P"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.3411764705882353" green="0.85490196078431369" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAddButton" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pushBtnTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kun-iU-QEz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-0y-dPA" userLabel="Minus" customClass="PushButton" customModule="DrinkWaterTracker" customModuleProvider="target">
+                                <rect key="frame" x="275" y="458" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="RQp-ET-MFr"/>
+                                    <constraint firstAttribute="height" constant="50" id="owx-Vh-jnh"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="1" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAddButton" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pushBtnTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gdS-f2-EvA"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="714-Gg-gCr" userLabel="Container View">
+                                <rect key="frame" x="150" y="28" width="300" height="300"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nV-29-Wsc" customClass="CounterView" customModule="DrinkWaterTracker" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="284" height="284"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTs-hP-sgh">
+                                                <rect key="frame" x="131" y="118" width="22" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="22" id="pxE-1v-qSM"/>
+                                                    <constraint firstAttribute="height" constant="48" id="xR1-7I-0s0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ro-Kr-qhL" customClass="MedalView" customModule="DrinkWaterTracker" customModuleProvider="target">
+                                                <rect key="frame" x="102" y="174" width="80" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="FQ7-Uv-Sgp"/>
+                                                    <constraint firstAttribute="height" constant="80" id="bgI-zC-enn"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="2Ro-Kr-qhL" firstAttribute="top" secondItem="vTs-hP-sgh" secondAttribute="bottom" constant="8" id="IxU-7T-3aO"/>
+                                            <constraint firstAttribute="centerX" secondItem="vTs-hP-sgh" secondAttribute="centerX" id="T1a-kp-2xb"/>
+                                            <constraint firstItem="2Ro-Kr-qhL" firstAttribute="centerX" secondItem="vTs-hP-sgh" secondAttribute="centerX" id="ahC-XQ-u3D"/>
+                                            <constraint firstAttribute="centerY" secondItem="vTs-hP-sgh" secondAttribute="centerY" id="sD9-uA-CMf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="counter">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outlineColor">
+                                                <color key="value" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="counterColor">
+                                                <color key="value" red="0.66244346217105265" green="1" blue="0.11579975328947369" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="drunkCups" destination="vTs-hP-sgh" id="URv-A4-Vim"/>
+                                            <outlet property="medalView" destination="2Ro-Kr-qhL" id="WpJ-hT-e9B"/>
+                                        </connections>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aoy-ot-Xcm" customClass="GraphView" customModule="DrinkWaterTracker" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="284" height="284"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water Drunk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9c7-1Z-YYr">
+                                                <rect key="frame" x="8" y="8" width="78" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="SZM-YT-TNi"/>
+                                                    <constraint firstAttribute="width" constant="78" id="mxv-Ee-j9O"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uS-pW-Wbe">
+                                                <rect key="frame" x="8" y="40" width="28" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="5Dg-2G-KNb"/>
+                                                    <constraint firstAttribute="width" constant="28" id="xWl-cn-Rol"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-MG-GWC">
+                                                <rect key="frame" x="44" y="40" width="9" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="9" id="2JK-cO-hEt"/>
+                                                    <constraint firstAttribute="height" constant="24" id="8w4-rk-BEo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHf-u2-dNd">
+                                                <rect key="frame" x="264" y="48" width="17" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="lME-MO-b64"/>
+                                                    <constraint firstAttribute="width" constant="17" id="xrX-n8-f79"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdo-XW-JWv">
+                                                <rect key="frame" x="272" y="222" width="9" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="fZ9-g0-IOM"/>
+                                                    <constraint firstAttribute="width" constant="9" id="n9F-do-RpC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmh-Wn-TrS">
+                                                <rect key="frame" x="16" y="244" width="13" height="24"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="604-SJ-4VF">
+                                                <rect key="frame" x="56" y="244" width="13" height="24"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aO6-lc-e5f">
+                                                <rect key="frame" x="94" y="244" width="13" height="24"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADK-6l-EWo">
+                                                <rect key="frame" x="140" y="244" width="13" height="24"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kay-1S-mbd">
+                                                <rect key="frame" x="181" y="244" width="13" height="24"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEm-ZX-h0Y">
+                                                <rect key="frame" x="218" y="244" width="13" height="24"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H5-bt-15w">
+                                                <rect key="frame" x="252" y="244" width="13" height="24"/>
+                                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="9c7-1Z-YYr" firstAttribute="leading" secondItem="Aoy-ot-Xcm" secondAttribute="leading" constant="8" id="26z-0E-h0n"/>
+                                            <constraint firstAttribute="trailing" secondItem="sdo-XW-JWv" secondAttribute="trailing" constant="3" id="JMN-9A-35D"/>
+                                            <constraint firstAttribute="trailing" secondItem="eHf-u2-dNd" secondAttribute="trailing" constant="3" id="TUq-op-YEj"/>
+                                            <constraint firstItem="9c7-1Z-YYr" firstAttribute="top" secondItem="Aoy-ot-Xcm" secondAttribute="top" constant="8" id="eMi-HD-k62"/>
+                                            <constraint firstAttribute="bottom" secondItem="sdo-XW-JWv" secondAttribute="bottom" constant="38" id="nfh-5j-PJN"/>
+                                            <constraint firstItem="Geg-MG-GWC" firstAttribute="top" secondItem="9c7-1Z-YYr" secondAttribute="bottom" constant="8" id="oEg-na-SNj"/>
+                                            <constraint firstItem="Geg-MG-GWC" firstAttribute="leading" secondItem="0uS-pW-Wbe" secondAttribute="trailing" constant="8" id="rmb-jf-y8b"/>
+                                            <constraint firstItem="0uS-pW-Wbe" firstAttribute="top" secondItem="9c7-1Z-YYr" secondAttribute="bottom" constant="8" id="u8u-zN-fH8"/>
+                                            <constraint firstItem="Geg-MG-GWC" firstAttribute="top" secondItem="9c7-1Z-YYr" secondAttribute="bottom" constant="8" id="wJD-pP-cpL"/>
+                                            <constraint firstItem="eHf-u2-dNd" firstAttribute="top" secondItem="Aoy-ot-Xcm" secondAttribute="top" constant="48" id="wji-Jb-Z2W"/>
+                                            <constraint firstItem="0uS-pW-Wbe" firstAttribute="leading" secondItem="Aoy-ot-Xcm" secondAttribute="leading" constant="8" id="yeD-9N-FLH"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.98039215686274506" green="0.9137254901960784" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.9882352941176471" green="0.30980392156862746" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="avgCupDrunkLabel" destination="Geg-MG-GWC" id="STs-ve-lCd"/>
+                                            <outlet property="maxCupDrunkLabel" destination="eHf-u2-dNd" id="luT-iG-NQv"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3nV-29-Wsc" secondAttribute="bottom" constant="8" id="0Lb-6R-VBI"/>
+                                    <constraint firstAttribute="bottom" secondItem="Aoy-ot-Xcm" secondAttribute="bottom" constant="8" id="2vS-xV-vzF"/>
+                                    <constraint firstAttribute="width" constant="300" id="5zF-vg-RVq"/>
+                                    <constraint firstItem="3nV-29-Wsc" firstAttribute="leading" secondItem="714-Gg-gCr" secondAttribute="leading" constant="8" id="88G-Dm-c9O"/>
+                                    <constraint firstItem="Aoy-ot-Xcm" firstAttribute="leading" secondItem="714-Gg-gCr" secondAttribute="leading" constant="8" id="XIW-Aq-fi7"/>
+                                    <constraint firstAttribute="trailing" secondItem="3nV-29-Wsc" secondAttribute="trailing" constant="8" id="XIt-41-4Ha"/>
+                                    <constraint firstItem="3nV-29-Wsc" firstAttribute="top" secondItem="714-Gg-gCr" secondAttribute="top" constant="8" id="a5f-na-zGg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Aoy-ot-Xcm" secondAttribute="trailing" constant="8" id="l2y-y8-o7n"/>
+                                    <constraint firstItem="Aoy-ot-Xcm" firstAttribute="top" secondItem="714-Gg-gCr" secondAttribute="top" constant="8" id="nUP-Vr-pd7"/>
+                                    <constraint firstAttribute="height" constant="300" id="q2E-th-1vn"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nMP-Xd-NG8" appends="YES" id="ZPe-Pc-ALs"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="aS3-0y-dPA" secondAttribute="centerY" constant="-183" id="9Zj-5k-ZeS"/>
+                            <constraint firstAttribute="centerX" secondItem="UqS-dI-Yw0" secondAttribute="centerX" id="Ek6-6I-yhv"/>
+                            <constraint firstAttribute="centerX" secondItem="aS3-0y-dPA" secondAttribute="centerX" id="Su9-5q-niV"/>
+                            <constraint firstItem="714-Gg-gCr" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="cTh-rS-GPk"/>
+                            <constraint firstAttribute="centerY" secondItem="UqS-dI-Yw0" secondAttribute="centerY" constant="-100" id="dyN-kx-NED"/>
+                            <constraint firstAttribute="centerX" secondItem="714-Gg-gCr" secondAttribute="centerX" id="oBQ-VC-Uid"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="lightColor">
+                                <color key="value" red="1" green="1" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="darkColor">
+                                <color key="value" red="0.87450980392156863" green="1" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="patternSize">
+                                <real key="value" value="30"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="addOneCupBtn" destination="UqS-dI-Yw0" id="42Y-fO-QQf"/>
+                        <outlet property="containerView" destination="714-Gg-gCr" id="eRr-LD-Bm5"/>
+                        <outlet property="counterView" destination="3nV-29-Wsc" id="Hr2-J5-CcP"/>
+                        <outlet property="graphView" destination="Aoy-ot-Xcm" id="vMq-Yg-Sq7"/>
+                        <outlet property="minOneCupBtn" destination="aS3-0y-dPA" id="jdi-4P-fkp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nMP-Xd-NG8">
+                    <connections>
+                        <action selector="counterViewTapped:" destination="vXZ-lx-hvc" id="meZ-vF-P0O"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>

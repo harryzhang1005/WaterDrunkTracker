@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA6FDD551AE15384009DC5A8 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDD541AE15384009DC5A8 /* CounterView.swift */; };
+		FA6FDD591AE178CC009DC5A8 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDD581AE178CC009DC5A8 /* GraphView.swift */; };
+		FA6FDD5B1AE1F75F009DC5A8 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */; };
+		FA6FDD5E1AE2117E009DC5A8 /* MedalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */; };
 		FABDDFA91AE0B5520096E9E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDDFA81AE0B5520096E9E8 /* AppDelegate.swift */; };
 		FABDDFAB1AE0B5520096E9E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDDFAA1AE0B5520096E9E8 /* ViewController.swift */; };
 		FABDDFAE1AE0B5520096E9E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABDDFAC1AE0B5520096E9E8 /* Main.storyboard */; };
 		FABDDFB01AE0B5520096E9E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABDDFAF1AE0B5520096E9E8 /* Images.xcassets */; };
 		FABDDFB31AE0B5520096E9E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABDDFB11AE0B5520096E9E8 /* LaunchScreen.xib */; };
 		FABDDFBF1AE0B5520096E9E8 /* DrinkWaterTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDDFBE1AE0B5520096E9E8 /* DrinkWaterTrackerTests.swift */; };
+		FABDDFC91AE0B5F40096E9E8 /* PushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDDFC81AE0B5F40096E9E8 /* PushButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA6FDD541AE15384009DC5A8 /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		FA6FDD581AE178CC009DC5A8 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		FA6FDD5C1AE20415009DC5A8 /* MedalDrawing.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MedalDrawing.playground; sourceTree = "<group>"; };
+		FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedalView.swift; sourceTree = "<group>"; };
 		FABDDFA31AE0B5520096E9E8 /* DrinkWaterTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkWaterTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABDDFA71AE0B5520096E9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABDDFA81AE0B5520096E9E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +46,7 @@
 		FABDDFB81AE0B5520096E9E8 /* DrinkWaterTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinkWaterTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABDDFBD1AE0B5520096E9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FABDDFBE1AE0B5520096E9E8 /* DrinkWaterTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterTrackerTests.swift; sourceTree = "<group>"; };
+		FABDDFC81AE0B5F40096E9E8 /* PushButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +94,12 @@
 				FABDDFAF1AE0B5520096E9E8 /* Images.xcassets */,
 				FABDDFB11AE0B5520096E9E8 /* LaunchScreen.xib */,
 				FABDDFA61AE0B5520096E9E8 /* Supporting Files */,
+				FABDDFC81AE0B5F40096E9E8 /* PushButton.swift */,
+				FA6FDD541AE15384009DC5A8 /* CounterView.swift */,
+				FA6FDD581AE178CC009DC5A8 /* GraphView.swift */,
+				FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */,
+				FA6FDD5C1AE20415009DC5A8 /* MedalDrawing.playground */,
+				FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */,
 			);
 			path = DrinkWaterTracker;
 			sourceTree = "<group>";
@@ -212,8 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6FDD5B1AE1F75F009DC5A8 /* BackgroundView.swift in Sources */,
+				FA6FDD591AE178CC009DC5A8 /* GraphView.swift in Sources */,
+				FA6FDD5E1AE2117E009DC5A8 /* MedalView.swift in Sources */,
 				FABDDFAB1AE0B5520096E9E8 /* ViewController.swift in Sources */,
 				FABDDFA91AE0B5520096E9E8 /* AppDelegate.swift in Sources */,
+				FABDDFC91AE0B5F40096E9E8 /* PushButton.swift in Sources */,
+				FA6FDD551AE15384009DC5A8 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +431,7 @@
 				FABDDFC41AE0B5520096E9E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FABDDFC51AE0B5520096E9E8 /* Build configuration list for PBXNativeTarget "DrinkWaterTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +440,7 @@
 				FABDDFC71AE0B5520096E9E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
