@@ -13,17 +13,14 @@ import UIKit
     @IBInspectable var lightColor: UIColor = UIColor.orangeColor()
     @IBInspectable var darkColor: UIColor = UIColor.yellowColor()
     @IBInspectable var patternSize: CGFloat = 200     // controls the size of repeating pattern
-    
 
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect)
     {
-        // Drawing code
-        
         // Step-1: draw bg color
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, darkColor.CGColor)
+        CGContextSetFillColorWithColor(context, darkColor.CGColor)  // reset fill color in current view's context
         CGContextFillRect(context, rect)
         
         // Step-2: draw triangles
@@ -38,48 +35,45 @@ import UIKit
     {
         let drawSize = CGSize(width: patternSize, height: patternSize)
         
-        ////// do repeat pattern start //////
-        UIGraphicsBeginImageContextWithOptions(drawSize, true, 0.0)  // creates a new context, true is opaque (faster), false is transparency;
+        ////// Create an off-screen image start //////
+        UIGraphicsBeginImageContextWithOptions(drawSize, true, 0.0)  // creates a new context, true is opaque (faster), false is transparency
         let drawingContext = UIGraphicsGetCurrentContext()
+        
+        // 1) Draw the rect as the backgroud
         darkColor.setFill()     // set the fill color for the new context
         CGContextFillRect(drawingContext, CGRectMake(0, 0, drawSize.width, drawSize.height))
-        ////// do repeat pattern end   //////
+ 
+        // 2) Draw triangles as a pattern
+        // moveToPoint(_:) is just like lifting your pen from the paper when you’re drawing and moving it to a new spot.
+        let trianglePath = UIBezierPath()   // Notice how you use one path to draw three triangles.
         
-        // Notice how you use one path to draw three triangles. moveToPoint(_:) is just like lifting your pen from the paper when you’re drawing and moving it to a new spot.
-        let trianglePath = UIBezierPath()
+        // triange-1
+        trianglePath.moveToPoint(CGPoint(x: drawSize.width/2, y: 0))                // point 1
+        trianglePath.addLineToPoint(CGPoint(x: 0, y: drawSize.height/2))            // point 2
+        trianglePath.addLineToPoint(CGPoint(x:drawSize.width, y:drawSize.height/2)) // point 3
         
-        // point 1
-        trianglePath.moveToPoint(CGPoint(x: drawSize.width/2, y: 0))
-        // point 2
-        trianglePath.addLineToPoint(CGPoint(x: 0, y: drawSize.height/2))
-        // point 3
-        trianglePath.addLineToPoint(CGPoint(x:drawSize.width, y:drawSize.height/2))
+        // triangle-2
+        trianglePath.moveToPoint(CGPoint(x: 0, y: drawSize.height/2))                   // point 4
+        trianglePath.addLineToPoint(CGPoint(x: drawSize.width/2, y: drawSize.height))   // point 5
+        trianglePath.addLineToPoint(CGPoint(x: 0, y: drawSize.height))                  // point 6
         
-        // point 4
-        trianglePath.moveToPoint(CGPoint(x: 0, y: drawSize.height/2))
-        // point 5
-        trianglePath.addLineToPoint(CGPoint(x: drawSize.width/2, y: drawSize.height))
-        // point 6
-        trianglePath.addLineToPoint(CGPoint(x: 0, y: drawSize.height))
-        
-        // point 7
-        trianglePath.moveToPoint(CGPoint(x: drawSize.width, y: drawSize.height/2))
-        // point 8
-        trianglePath.addLineToPoint(CGPoint(x:drawSize.width/2, y:drawSize.height))
-        // point 9
-        trianglePath.addLineToPoint(CGPoint(x: drawSize.width, y: drawSize.height))
+        // triangle-3
+        trianglePath.moveToPoint(CGPoint(x: drawSize.width, y: drawSize.height/2))  // point 7
+        trianglePath.addLineToPoint(CGPoint(x:drawSize.width/2, y:drawSize.height)) // point 8
+        trianglePath.addLineToPoint(CGPoint(x: drawSize.width, y: drawSize.height)) // point 9
         
         lightColor.setFill()
         trianglePath.fill()
         
-        ////// do repeat pattern start //////
+        // 3) combine 1) and 2) create an off-screen image
         let image = UIGraphicsGetImageFromCurrentImageContext()    // extracts a UIImage from the current context
-        UIGraphicsEndImageContext() // end the current context, the drawing context reverts to the view's context, so any further drawing in drawRect(_:) happens in the view
         
-        // draw the image as a repeated pattern
-        UIColor(patternImage: image).setFill()
+        //end the image's context, the drawing context reverts to the view's context,so any further drawing in drawRect(_:) happens in the view
+        UIGraphicsEndImageContext()
+        ////// Create an off-screen image end //////
+        
+        UIColor(patternImage: image).setFill()  // do repeate pattern using an off-screen image as patternImage
         CGContextFillRect(context, rect)
-        ////// do repeat pattern end   //////
     }
     
     

@@ -67,6 +67,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA6518141AF1C38100EEA6C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FABDDFC81AE0B5F40096E9E8 /* PushButton.swift */,
+				FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */,
+				FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */,
+				FA6FDD541AE15384009DC5A8 /* CounterView.swift */,
+				FA6FDD581AE178CC009DC5A8 /* GraphView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		FABDDF9A1AE0B5520096E9E8 = {
 			isa = PBXGroup;
 			children = (
@@ -88,18 +100,14 @@
 		FABDDFA51AE0B5520096E9E8 /* DrinkWaterTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FA6518141AF1C38100EEA6C3 /* View */,
 				FABDDFA81AE0B5520096E9E8 /* AppDelegate.swift */,
 				FABDDFAA1AE0B5520096E9E8 /* ViewController.swift */,
 				FABDDFAC1AE0B5520096E9E8 /* Main.storyboard */,
 				FABDDFAF1AE0B5520096E9E8 /* Images.xcassets */,
 				FABDDFB11AE0B5520096E9E8 /* LaunchScreen.xib */,
 				FABDDFA61AE0B5520096E9E8 /* Supporting Files */,
-				FABDDFC81AE0B5F40096E9E8 /* PushButton.swift */,
-				FA6FDD541AE15384009DC5A8 /* CounterView.swift */,
-				FA6FDD581AE178CC009DC5A8 /* GraphView.swift */,
-				FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */,
 				FA6FDD5C1AE20415009DC5A8 /* MedalDrawing.playground */,
-				FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */,
 			);
 			path = DrinkWaterTracker;
 			sourceTree = "<group>";
