@@ -71,12 +71,20 @@
 			isa = PBXGroup;
 			children = (
 				FABDDFC81AE0B5F40096E9E8 /* PushButton.swift */,
-				FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */,
 				FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */,
 				FA6FDD541AE15384009DC5A8 /* CounterView.swift */,
 				FA6FDD581AE178CC009DC5A8 /* GraphView.swift */,
+				FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		FA8487A61B72D96700FF4CE8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FABDDFAA1AE0B5520096E9E8 /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		FABDDF9A1AE0B5520096E9E8 = {
@@ -100,9 +108,9 @@
 		FABDDFA51AE0B5520096E9E8 /* DrinkWaterTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FA8487A61B72D96700FF4CE8 /* Controller */,
 				FA6518141AF1C38100EEA6C3 /* View */,
 				FABDDFA81AE0B5520096E9E8 /* AppDelegate.swift */,
-				FABDDFAA1AE0B5520096E9E8 /* ViewController.swift */,
 				FABDDFAC1AE0B5520096E9E8 /* Main.storyboard */,
 				FABDDFAF1AE0B5520096E9E8 /* Images.xcassets */,
 				FABDDFB11AE0B5520096E9E8 /* LaunchScreen.xib */,
@@ -181,14 +189,19 @@
 		FABDDF9B1AE0B5520096E9E8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = HappyGuy;
 				TargetAttributes = {
 					FABDDFA21AE0B5520096E9E8 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = UJ3H9HRQQ5;
+						LastSwiftMigration = 0830;
 					};
 					FABDDFB71AE0B5520096E9E8 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = UJ3H9HRQQ5;
+						LastSwiftMigration = 0830;
 						TestTargetID = FABDDFA21AE0B5520096E9E8;
 					};
 				};
@@ -370,9 +383,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
 				INFOPLIST_FILE = DrinkWaterTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -380,9 +395,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
 				INFOPLIST_FILE = DrinkWaterTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -390,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -401,6 +419,7 @@
 				INFOPLIST_FILE = DrinkWaterTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinkWaterTracker.app/DrinkWaterTracker";
 			};
 			name = Debug;
@@ -409,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -416,6 +436,7 @@
 				INFOPLIST_FILE = DrinkWaterTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinkWaterTracker.app/DrinkWaterTracker";
 			};
 			name = Release;

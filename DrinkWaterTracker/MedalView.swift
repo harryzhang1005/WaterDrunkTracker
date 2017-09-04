@@ -12,7 +12,7 @@ class MedalView: UIImageView
 {
     lazy var medalImage: UIImage = self.createMedalImage()
     
-    func showMedal(show: Bool)
+    func showMedal(_ show: Bool)
     {
         if show {
             image = medalImage
@@ -23,7 +23,7 @@ class MedalView: UIImageView
     }
     
     // create an off-screen image
-    private func createMedalImage() -> UIImage
+    fileprivate func createMedalImage() -> UIImage
     {
         let size = CGSize(width: 120, height: 200)  // define the medal size
         
@@ -38,78 +38,79 @@ class MedalView: UIImageView
         // add shadow to context, When you draw an object into the context, this code creates a shadow for each object.
         // Simply group drawing objects (1-5) with a transparency layer, and you’ll only draw one shadow for the whole group.
         // The shadow is a gstate parameter. After a shadow is specified, all objects drawn subsequently will be shadowed. To turn off shadowing, set the shadow color to a fully transparent color (or pass NULL as the color), or use the standard gsave/grestore mechanism.
-        let shadowColor: UIColor = UIColor.blackColor().colorWithAlphaComponent(0.80)
-        let shadowOffset = CGSizeMake(2.0, 2.0)
+        let shadowColor: UIColor = UIColor.black.withAlphaComponent(0.80)
+        let shadowOffset = CGSize(width: 2.0, height: 2.0)
         let shadowBlurRadius: CGFloat = 5
-        CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadowColor.CGColor)  // CGx is C func, so no explicit param names
+        context?.setShadow(offset: shadowOffset, blur: shadowBlurRadius, color: shadowColor.cgColor)  // CGx is C func, so no explicit param names
         //func CGContextSetShadowWithColor(context: CGContext!, offset: CGSize, blur: CGFloat, color: CGColor!)
         
-        CGContextBeginTransparencyLayer(context, nil)   /// start a transparency layer for group drawing objects
+        context?.beginTransparencyLayer(auxiliaryInfo: nil)   /// start a transparency layer for group drawing objects
         
         // Object 1. Lower ribbon 斜四边形
-        var lowerRibbonPath = UIBezierPath()    // clock wise draw the back ribbon
-        lowerRibbonPath.moveToPoint(CGPointMake(0, 0))          // (0, 0)
-        lowerRibbonPath.addLineToPoint(CGPointMake(40, 0))      // (40, 0)
-        lowerRibbonPath.addLineToPoint(CGPointMake(78, 70))     // (78, 70)
-        lowerRibbonPath.addLineToPoint(CGPointMake(38, 70))     // (38, 70)
-        lowerRibbonPath.closePath()
-        UIColor.redColor().setFill()
+        let lowerRibbonPath = UIBezierPath()    // clock wise draw the back ribbon
+        lowerRibbonPath.move(to: CGPoint(x: 0, y: 0))          // (0, 0)
+        lowerRibbonPath.addLine(to: CGPoint(x: 40, y: 0))      // (40, 0)
+        lowerRibbonPath.addLine(to: CGPoint(x: 78, y: 70))     // (78, 70)
+        lowerRibbonPath.addLine(to: CGPoint(x: 38, y: 70))     // (38, 70)
+        lowerRibbonPath.close()
+        UIColor.red.setFill()
         lowerRibbonPath.fill()
         
         // Object 2. Clasp 扣环
-        var claspPath = UIBezierPath(roundedRect: CGRectMake(36, 62, 43, 20), cornerRadius: 5)
+        let claspPath = UIBezierPath(roundedRect: CGRect(x: 36, y: 62, width: 43, height: 20), cornerRadius: 5)
         claspPath.lineWidth = 5
         darkGoldColor.setStroke()
         claspPath.stroke()
         
         // Object 3. Medallion 徽章
-        var medallionPath = UIBezierPath(ovalInRect: CGRect(origin: CGPointMake(8, 72), size: CGSizeMake(100, 100)))
+        let medallionPath = UIBezierPath(ovalIn: CGRect(origin: CGPoint(x: 8, y: 72), size: CGSize(width: 100, height: 100)))
         
-        CGContextSaveGState(context)    // save the context’s drawing state before adding the clipping path
+        context?.saveGState()    // save the context’s drawing state before adding the clipping path
         
         medallionPath.addClip()         // create a clipping path to constrain the gradient within the medallion's circle
-        
-        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(),
-            [darkGoldColor.CGColor, midGoldColor.CGColor, lightGoldColor.CGColor], [0, 0.51, 1])
-        
+		
+        let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                                  colors: [darkGoldColor.cgColor, midGoldColor.cgColor, lightGoldColor.cgColor] as CFArray,
+                                  locations: [0, 0.51, 1])
+		
         // Fill the current clipping region of `context' with a linear gradient from `startPoint' to `endPoint'.
-        CGContextDrawLinearGradient(context, gradient, CGPointMake(40, 40), CGPointMake(100, 160), 0)
+        context?.drawLinearGradient(gradient!, start: CGPoint(x: 40, y: 40), end: CGPoint(x: 100, y: 160), options: CGGradientDrawingOptions(rawValue: 0))
         
         // To draw the solid internal line of the medal, use the medallion’s circle path, but scale it before drawing. Instead of transforming the whole context, you’ll just apply the transform to one path.
-        var transform = CGAffineTransformMakeScale(0.8, 0.8)        // scale     transform, scales down 80%
-        transform = CGAffineTransformTranslate(transform, 15, 30)   // translate transform
+        var transform = CGAffineTransform(scaleX: 0.8, y: 0.8)        // scale     transform, scales down 80%
+        transform = transform.translatedBy(x: 15, y: 30)   // translate transform
         medallionPath.lineWidth = 2.0
-        medallionPath.applyTransform(transform)     // apply the transform to the path
+        medallionPath.apply(transform)     // apply the transform to the path
         medallionPath.stroke()
         
-        CGContextRestoreGState(context)  // restore it after the gradient is drawn so that the context is no longer clipped
+        context?.restoreGState()  // restore it after the gradient is drawn so that the context is no longer clipped
         
         // Object 4. Upper ribbon
-        var upperRibbonPath = UIBezierPath()
-        upperRibbonPath.moveToPoint(CGPointMake(68, 0))
-        upperRibbonPath.addLineToPoint(CGPointMake(108, 0))
-        upperRibbonPath.addLineToPoint(CGPointMake(78, 70))
-        upperRibbonPath.addLineToPoint(CGPointMake(38, 70))
-        upperRibbonPath.closePath()
-        UIColor.blueColor().setFill()
+        let upperRibbonPath = UIBezierPath()
+        upperRibbonPath.move(to: CGPoint(x: 68, y: 0))
+        upperRibbonPath.addLine(to: CGPoint(x: 108, y: 0))
+        upperRibbonPath.addLine(to: CGPoint(x: 78, y: 70))
+        upperRibbonPath.addLine(to: CGPoint(x: 38, y: 70))
+        upperRibbonPath.close()
+        UIColor.blue.setFill()
         upperRibbonPath.fill()
         
         // Object 5. Number one
         let numberOne = "1" as NSString     // must be NSString to be able to use drawInRect()
-        let numberOneRect = CGRectMake(47, 100, 50, 50)
+        let numberOneRect = CGRect(x: 47, y: 100, width: 50, height: 50)
         let font = UIFont(name: "Academy Engraved LET", size: 60)
-        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle()     // optional
+        let textStyle = NSMutableParagraphStyle.default     // optional
         let numberOneAttributes = [NSFontAttributeName: font!, NSParagraphStyleAttributeName: textStyle,
                                    NSForegroundColorAttributeName: darkGoldColor]
-        numberOne.drawInRect(numberOneRect, withAttributes: numberOneAttributes)
+        numberOne.draw(in: numberOneRect, withAttributes: numberOneAttributes)
         
-        CGContextEndTransparencyLayer(context)      /// end the transparency layer for group drawing objects
+        context?.endTransparencyLayer()      /// end the transparency layer for group drawing objects
         
         let image = UIGraphicsGetImageFromCurrentImageContext()     // end always
         
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
     
    

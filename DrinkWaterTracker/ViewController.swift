@@ -46,17 +46,17 @@ class ViewController: UIViewController
         }
     }
     
-    @IBAction func pushBtnTapped(sender: PushButton)
+    @IBAction func pushBtnTapped(_ sender: PushButton)
     {
         if sender.isAddButton   // plus button
         {
             if counterView.counter < NumOfGlasses {
-                counterView.counter++;
+                counterView.counter += 1;
             }
         }
         else { // minus button
             if counterView.counter > 0 {
-                counterView.counter--;
+                counterView.counter -= 1;
             }
         }
         
@@ -69,18 +69,14 @@ class ViewController: UIViewController
     }
     
     // Toggle to Graph view
-    @IBAction func counterViewTapped(gesture: UITapGestureRecognizer?)
+    @IBAction func counterViewTapped(_ gesture: UITapGestureRecognizer?)
     {
         if isGraphViewShowing {
             // switch to Counter view
-            UIView.transitionFromView(graphView, toView: counterView, duration: 1.0,
-                options: UIViewAnimationOptions.TransitionFlipFromLeft | UIViewAnimationOptions.ShowHideTransitionViews,
-                completion: nil)
+			UIView.transition(from: graphView, to: counterView, duration: 1.0, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
         }
         else { // switch to Graph view
-            UIView.transitionFromView(counterView, toView: graphView, duration: 1.0,
-                options: UIViewAnimationOptions.TransitionFlipFromRight | UIViewAnimationOptions.ShowHideTransitionViews,
-                completion: nil)
+			UIView.transition(from: counterView, to: graphView, duration: 1.0, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
             
             self.setupGraphDisplay()
         }
