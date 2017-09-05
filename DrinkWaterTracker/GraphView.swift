@@ -29,7 +29,7 @@ import UIKit
         // Drawing Code
         let context = UIGraphicsGetCurrentContext()
         
-        // Step-1) Create paths to use as clipping areas instead of whole area
+        // Step-1) Create paths to use as clipping areas instead of whole view's context area
         self.drawClippingAreas(context!, rect: rect);
         
         // Step-2) Gradient background view
@@ -52,8 +52,11 @@ import UIKit
     func getGradient() -> CGGradient
     {
         let colors = [startColor.cgColor, endColor.cgColor]
-        let colorSpace = CGColorSpaceCreateDeviceRGB()  // all contexts have a color space
-        let colorLocations: [CGFloat] = [0.0, 1.0]
+		
+		// all contexts have a color space. This could be CMYK or grayscale, but here you're using the RGB color space.
+        let colorSpace = CGColorSpaceCreateDeviceRGB()	// Creates a device-dependent RGB color space.
+		
+		let colorLocations: [CGFloat] = [0.0, 1.0]
         
         let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: colorLocations);
         return gradient!;
@@ -75,7 +78,7 @@ import UIKit
     
     func getYpoint(_ rect: CGRect) -> (Int) -> CGFloat
     {
-        // y-axis point, Because the origin is in the top-left corner and you draw a graph from an origin point in the bottom-left corner, columnYPoint adjusts its return value so that the graph is oriented as you would expect.
+        // y-axis point, Because the origin is in the top-left corner and you draw a graph from an origin point in the bottom-left corner, columnYPoint adjusts its return value so that the graph is oriented as you would expect. ?
         let graphHeight = rect.height - topBorder - bottomBorder
         let maxValue = graphPoints.max()!
         
@@ -90,8 +93,9 @@ import UIKit
     
     /* Step-1) Create paths to use as clipping areas instead of whole area
     
-    Speed Note: Drawing static views Core Graphics is generally quick enough, but if your views move around or need frequent redrawing, you should use Core Animation layers. It’s optimized so that the GPU, handles most of the processing.
-    In contrast, the CPU processes view drawing performed by drawRect(_:).
+    Speed Note: Drawing static views Core Graphics is generally quick enough, but if your views move around or need frequent redrawing, you should use Core Animation layers. It’s optimized so that the GPU, handles most of the processing. In contrast, the CPU processes view drawing performed by drawRect(_:).
+	
+	UIKit/AppKit	->	Core Animation	-> Core Graphics and OpenGL/OpenGL ES	-> GPU/Graphics Hardware
     
     Instead of using a clipping path, you can create rounded corners using the cornerRadius property of a CALayer, but you should optimize for your situation.
     */
@@ -99,9 +103,9 @@ import UIKit
     {
         //let width = rect.width, height = rect.height;
         
-        // set up bg clipping area that constrains the gradient, and graph view have a nice, rounded corners
+        // set up bg clipping area, that constrains the gradient, and graph view have a nice, rounded corners
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: UIRectCorner.allCorners,
-            cornerRadii: CGSize(width: 8.0, height: 8.0));
+                                cornerRadii: CGSize(width: 8.0, height: 8.0));
         path.addClip()
     }
     
@@ -110,6 +114,8 @@ import UIKit
     {
         let startPoint = CGPoint.zero
         let endPoint = CGPoint(x: 0, y: self.bounds.height);
+		
+		// CG drawing functions need to know the context in which they will draw.
 		context.drawLinearGradient(self.getGradient(), start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
     }
     
@@ -119,6 +125,7 @@ import UIKit
     {
         let columnXpoint = self.getXpoint(rect)
         let columnYpoint = self.getYpoint(rect)
+		
         let maxValue = graphPoints.max()!
         
         // Find the graph points and draw graph lines
@@ -131,9 +138,13 @@ import UIKit
         for i in 1..<graphPoints.count {    // a week (1-7)
             graphPath.addLine( to: CGPoint(x: columnXpoint(i), y: columnYpoint(graphPoints[i]) ) );
         }
-        
-        //Opt start: Create a gradient underneath this path by using the path as a clipping path
-        context.saveGState()    // key point, Push the original graphics state onto the stack with CGContextSaveGState()
+		
+		/* Graphics Context State
+		Graphics contexts can save states. When you set many context properties, such as fill color, transformation matrix, color space or clip region, you're actually setting them for the current graphics state.
+		You can save a state by using CGContextSaveGState(), which pushes a copy of the current graphics state onto the state stack. You can also make changes to context properties, but when you call CGContextRestoreGState(), the original state is taken off the stack and the context properties revert.
+		*/
+        /// start: Create a gradient underneath this path by using the path as a clipping path
+        context.saveGState()    // key point, -1. Push the original graphics state onto the stack with CGContextSaveGState()
         
         let clippingPath = graphPath.copy() as! UIBezierPath
         clippingPath.addLine( to: CGPoint(x: columnXpoint(graphPoints.count - 1), y: rect.height) ); // bottom-right point
@@ -141,18 +152,20 @@ import UIKit
         clippingPath.close(); // Key point: add lines to the copied path to complete the clip area
         
         // add the clipping path to the context. When the context is filled, only the clipped path is actually filled.
-        clippingPath.addClip()      // add the clipping path to a new graphics state
+        clippingPath.addClip()      // -2. add the clipping path to a new graphics state
         
         // fill the clipping path with gradient color
         let highestYpoint = columnYpoint(maxValue)
         let startPoint: CGPoint = CGPoint(x: margin, y: highestYpoint)
         let endPoint: CGPoint = CGPoint(x: margin, y: self.bounds.height)
-        context.drawLinearGradient(self.getGradient(), start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0));  // draw the gradient within the clipping path
+        context.drawLinearGradient(self.getGradient(), start: startPoint, end: endPoint,
+                                   options: CGGradientDrawingOptions(rawValue: 0));  // -3. draw the gradient within the clipping path
         
-        context.restoreGState() // Restore the original graphics state — this was the state before you added the clipping path
-        //Opt end
+        context.restoreGState() // -4. Restore the original graphics state — this was the state before you added the clipping path
+        /// end: this was the state before you added the clipping path
         
-        graphPath.lineWidth = 2.0; graphPath.stroke(); // finally draw graph lines
+        graphPath.lineWidth = 2.0;
+		graphPath.stroke(); // finally draw graph lines
         
     }//EndFunc
     
@@ -169,7 +182,8 @@ import UIKit
             point.x -= (5.0/2); point.y -= (5.0/2);
             
             // fills a circle path for each of the elements in the array at the calculated x and y points
-            let circle = UIBezierPath(ovalIn: CGRect(origin: point, size: CGSize(width: 5.0, height: 5.0)))
+            let circle = UIBezierPath(ovalIn: CGRect(origin: point,
+                                                     size: CGSize(width: 5.0, height: 5.0)) )
             circle.fill()
         }
     }
@@ -214,10 +228,12 @@ import UIKit
         let calendar = Calendar.current
         let components = (calendar as NSCalendar).components(componentOptions, from: Date())
         var weekday = components.weekday    // current day of the week
+		print("current day: \(weekday!)")	// Tuesday is 3
         
         let days = ["S", "S", "M", "T", "W", "T", "F"]
         
-        // 3. set up the day name labels with corrent day
+        // 3. set up the day name labels with correct day. Make sure the last one is current day. so reverse days array
+		// set today's data as the last item in the graph's data array
         for i in (1...days.count).reversed()    // from 7 to 1
         {
             if let aLabel = self.viewWithTag(i) as? UILabel

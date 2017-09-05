@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		533323961F5F499700C3E40B /* screenshot-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 533323931F5F499700C3E40B /* screenshot-1.png */; };
+		533323971F5F499700C3E40B /* screenshot-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 533323941F5F499700C3E40B /* screenshot-2.png */; };
+		533323981F5F499700C3E40B /* screenshot-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 533323951F5F499700C3E40B /* screenshot-3.png */; };
 		FA6FDD551AE15384009DC5A8 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDD541AE15384009DC5A8 /* CounterView.swift */; };
 		FA6FDD591AE178CC009DC5A8 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDD581AE178CC009DC5A8 /* GraphView.swift */; };
 		FA6FDD5B1AE1F75F009DC5A8 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */; };
@@ -31,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		533323931F5F499700C3E40B /* screenshot-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenshot-1.png"; sourceTree = "<group>"; };
+		533323941F5F499700C3E40B /* screenshot-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenshot-2.png"; sourceTree = "<group>"; };
+		533323951F5F499700C3E40B /* screenshot-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenshot-3.png"; sourceTree = "<group>"; };
 		FA6FDD541AE15384009DC5A8 /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		FA6FDD581AE178CC009DC5A8 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -67,13 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		533323921F5F496400C3E40B /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				533323931F5F499700C3E40B /* screenshot-1.png */,
+				533323941F5F499700C3E40B /* screenshot-2.png */,
+				533323951F5F499700C3E40B /* screenshot-3.png */,
+			);
+			name = Screenshots;
+			sourceTree = "<group>";
+		};
 		FA6518141AF1C38100EEA6C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FABDDFC81AE0B5F40096E9E8 /* PushButton.swift */,
-				FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */,
 				FA6FDD541AE15384009DC5A8 /* CounterView.swift */,
 				FA6FDD581AE178CC009DC5A8 /* GraphView.swift */,
+				FA6FDD5A1AE1F75F009DC5A8 /* BackgroundView.swift */,
 				FA6FDD5D1AE2117E009DC5A8 /* MedalView.swift */,
 			);
 			name = View;
@@ -108,6 +124,7 @@
 		FABDDFA51AE0B5520096E9E8 /* DrinkWaterTracker */ = {
 			isa = PBXGroup;
 			children = (
+				533323921F5F496400C3E40B /* Screenshots */,
 				FA8487A61B72D96700FF4CE8 /* Controller */,
 				FA6518141AF1C38100EEA6C3 /* View */,
 				FABDDFA81AE0B5520096E9E8 /* AppDelegate.swift */,
@@ -190,17 +207,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = HappyGuy;
 				TargetAttributes = {
 					FABDDFA21AE0B5520096E9E8 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = UJ3H9HRQQ5;
+						DevelopmentTeam = VQQ6RY49MQ;
 						LastSwiftMigration = 0830;
 					};
 					FABDDFB71AE0B5520096E9E8 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = UJ3H9HRQQ5;
+						DevelopmentTeam = VQQ6RY49MQ;
 						LastSwiftMigration = 0830;
 						TestTargetID = FABDDFA21AE0B5520096E9E8;
 					};
@@ -233,6 +250,9 @@
 				FABDDFAE1AE0B5520096E9E8 /* Main.storyboard in Resources */,
 				FABDDFB31AE0B5520096E9E8 /* LaunchScreen.xib in Resources */,
 				FABDDFB01AE0B5520096E9E8 /* Images.xcassets in Resources */,
+				533323981F5F499700C3E40B /* screenshot-3.png in Resources */,
+				533323971F5F499700C3E40B /* screenshot-2.png in Resources */,
+				533323961F5F499700C3E40B /* screenshot-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,14 +331,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -355,8 +378,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -375,6 +400,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -383,9 +409,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
+				DEVELOPMENT_TEAM = VQQ6RY49MQ;
 				INFOPLIST_FILE = DrinkWaterTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HappyGuy.com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -395,9 +422,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
+				DEVELOPMENT_TEAM = VQQ6RY49MQ;
 				INFOPLIST_FILE = DrinkWaterTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HappyGuy.com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -407,7 +435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
+				DEVELOPMENT_TEAM = VQQ6RY49MQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -418,6 +446,7 @@
 				);
 				INFOPLIST_FILE = DrinkWaterTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HappyGuy.com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinkWaterTracker.app/DrinkWaterTracker";
@@ -428,13 +457,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = UJ3H9HRQQ5;
+				DEVELOPMENT_TEAM = VQQ6RY49MQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = DrinkWaterTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HappyGuy.com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinkWaterTracker.app/DrinkWaterTracker";

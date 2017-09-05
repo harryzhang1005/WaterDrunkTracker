@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Create a repeating pattern for the background
 @IBDesignable class BackgroundView: UIView
 {
     @IBInspectable var lightColor: UIColor = UIColor.orange
@@ -36,11 +37,11 @@ import UIKit
         let drawSize = CGSize(width: patternSize, height: patternSize)
         
         ////// Create an off-screen image start //////
-        UIGraphicsBeginImageContextWithOptions(drawSize, true, 0.0)  // creates a new context, true is opaque (faster), false is transparency
-        let drawingContext = UIGraphicsGetCurrentContext()
+        UIGraphicsBeginImageContextWithOptions(drawSize, true, 0.0)  // creates a new image's context and sets it as the current drawing context; true is opaque (faster), false is transparency; 0.0 ensures the correct scale of the context for the device is automatically applied.
+        let drawingContext = UIGraphicsGetCurrentContext()	// get the new image's context
         
         // 1) Draw the rect as the backgroud
-        darkColor.setFill()     // set the fill color for the new context
+        darkColor.setFill()     // set the fill color for the new image context
         drawingContext?.fill(CGRect(x: 0, y: 0, width: drawSize.width, height: drawSize.height))
  
         // 2) Draw triangles as a pattern
@@ -66,13 +67,13 @@ import UIKit
         trianglePath.fill()
         
         // 3) combine 1) and 2) create an off-screen image
-        let image = UIGraphicsGetImageFromCurrentImageContext()    // extracts a UIImage from the current context
+        let image = UIGraphicsGetImageFromCurrentImageContext()    // extracts a UIImage from the new image's context
         
-        //end the image's context, the drawing context reverts to the view's context,so any further drawing in drawRect(_:) happens in the view
+        // Here end the image's context, the drawing context reverts to the view's context,so any further drawing in drawRect(_:) happens in the view
         UIGraphicsEndImageContext()
         ////// Create an off-screen image end //////
         
-        UIColor(patternImage: image!).setFill()  // do repeate pattern using an off-screen image as patternImage
+        UIColor(patternImage: image!).setFill()  // do repeate pattern using the off-screen image in view's context
         context.fill(rect)
     }
     

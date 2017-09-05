@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController
 {    
-    // A container view to make an animated transition between the Conter view and Graph view
+    // A container view to make an animated transition between the Counter view and the Graph view
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var counterView: CounterView!
@@ -51,7 +51,7 @@ class ViewController: UIViewController
         if sender.isAddButton   // plus button
         {
             if counterView.counter < NumOfGlasses {
-                counterView.counter += 1;
+                counterView.counter += 1;	// Magic is here. This will trigger "re-draw" the counter view
             }
         }
         else { // minus button
@@ -72,11 +72,13 @@ class ViewController: UIViewController
     @IBAction func counterViewTapped(_ gesture: UITapGestureRecognizer?)
     {
         if isGraphViewShowing {
-            // switch to Counter view
-			UIView.transition(from: graphView, to: counterView, duration: 1.0, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
+            // switch to Counter view, performs a horizontal flip transition. Other transitions are cross dissolve, vertical flip and curl up or down. The transition masks the .showHideTransitionViews constant, so you don't have to remove the view to prevent it from being shown.
+			UIView.transition(from: graphView, to: counterView, duration: 1.0,
+			                  options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
         }
         else { // switch to Graph view
-			UIView.transition(from: counterView, to: graphView, duration: 1.0, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+			UIView.transition(from: counterView, to: graphView, duration: 1.0,
+			                  options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
             
             self.setupGraphDisplay()
         }
@@ -93,7 +95,5 @@ class ViewController: UIViewController
         // 2. notify graph redrawn
         graphView.setNeedsDisplay()
     }
-    
-    
+	
 }//EndClass
-
