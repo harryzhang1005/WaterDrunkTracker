@@ -60,5 +60,10 @@ override func draw(_ rect: CGRect)
 	plusOrMinusPath.stroke()            // draw the stroke
 }
 ```
+## A Screenshot
+
+<p align="center">
+	<img src="https://github.com/harveyzhang1028/WaterDrunkTracker/blob/master/screenshots/screenshot-2.png" width=320 height=568></img>
+</p>
 
 Happy coding! :+1:  :sparkles:
