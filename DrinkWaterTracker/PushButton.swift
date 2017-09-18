@@ -95,7 +95,7 @@ UIButton -> UIControl -> UIView -> UIResponder -> NSObject
         lineColor.setStroke();              // set the stroke color
         
         plusOrMinusPath.lineWidth = 4.0;    // if 3.0, need +/- 0.5 to avoid anti-aliases, line thickness
-        plusOrMinusPath.stroke()            // draw the stroke 描边
+        plusOrMinusPath.stroke()            // draw the stroke
     }
    
 }//EndOfClass
