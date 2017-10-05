@@ -3,6 +3,7 @@
 Core Graphics: drawing paths, creating patterns and gradients, and transforming the context.
 
 Q: Drawing Into the Context?
+
 Core Graphics uses a "painter's model".
 
 When you draw into a context, it's exactly like making a painting. You lay down a path and fill it, and then lay down another path on top and fill it. You can't change the pixels that have been laid down, but you can "paint" over them.
@@ -16,13 +17,17 @@ Core Graphics is Apple's vector drawing framework.
 
 To draw a shape in Core Graphics, you define a path that tells Core Graphics the line to trace or the line to fill.
 There are three fundamentals to know about the paths:
+
 -1. A path can be stroked and filled
+
 -2. A stroke outlines the path in the current stroke color
+
 -3. A fill will fill up a closed path with the current fill color
 
 Note: Never call drawRect(_:) directly. If your view is not being updated, then call setNeedsDisplay() on the view.
 
 Q: How setNeedsDisplay works ?
+
 setNeedsDisplay() does not itself call drawRect(_:), but it flags the view as ‘dirty’, triggering a redraw using drawRect(_:) on the next screen update cycle. Even if you call setNeedsDisplay() five times in the same method you’ll only ever actually call drawRect(_:) once.
 
 Note: Any drawing done in drawRect(_:) goes into the view’s graphics context.
@@ -50,8 +55,8 @@ override func draw(_ rect: CGRect)
 
 	if isAddButton      // vertical stroke
 	{
-	plusOrMinusPath.move(to: CGPoint(x: bounds.width/2, y: bounds.height/2 - plusOrMinusLength/2))
-	plusOrMinusPath.addLine(to: CGPoint(x: bounds.width/2, y: bounds.height/2 + plusOrMinusLength/2))
+		plusOrMinusPath.move(to: CGPoint(x: bounds.width/2, y: bounds.height/2 - plusOrMinusLength/2))
+		plusOrMinusPath.addLine(to: CGPoint(x: bounds.width/2, y: bounds.height/2 + plusOrMinusLength/2))
 	}
 
 	lineColor.setStroke();              // set the stroke color
